@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    text-align: center;
+    color: white;
+    overflow-x: hidden;
+}
+
+.container {
+    margin-top: 80px;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #ff4d6d;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.step {
+    display: none;
+    margin-top: 20px;
+}
+
+img {
+    width: 200px;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+/* typing cursor */
+.typing::after {
+    content: "|";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* hearts animation */
+.heart {
+    position: fixed;
+    bottom: -10px;
+    font-size: 20px;
+    animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity:1; }
+    100% { transform: translateY(-100vh); opacity:0; }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- 🎵 MUSIC -->
+<audio id="music" loop>
+    <source src="Music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<h1>Happy Birthday softuu 🫂🌸</h1>
+
+<button onclick="start()">Start 💌</button>
+
+<div id="step1" class="step">
+<p id="text1" class="typing"></p>
+<button onclick="next2()">Next ➡️</button>
+</div>
+
+<div id="step2" class="step">
+<p id="text2" class="typing"></p>
+<button onclick="next3()">Next ➡️</button>
+</div>
+
+<div id="step3" class="step">
+<p id="text3" class="typing"></p>
+
+<img src="IMG_123.jpg">
+<img src="IMG_124.jpg">
+
+<button onclick="next4()">Final 💝</button>
+</div>
+
+<div id="step4" class="step">
+<h2>I really like you… ❤️</h2>
+<p>Stay the same always 🌸</p>
+</div>
+
+</div>
+
+<script>
+
+// 🎵 start music
+function start(){
+    document.getElementById("music").play();
+    document.getElementById("step1").style.display="block";
+    typeText("text1", "Aaj ka din special hai... kyunki tum ho 😊❤️");
+}
+
+function next2(){
+    document.getElementById("step2").style.display="block";
+    typeText("text2", "Tumne bina try kiye meri life better bana di 💖");
+}
+
+function next3(){
+    document.getElementById("step3").style.display="block";
+    typeText("text3", "Sach bolu... tum meri life ka best part ho ❤️");
+}
+
+function next4(){
+    document.getElementById("step4").style.display="block";
+}
+
+// ⌨️ typing effect
+function typeText(id, text){
+    let i = 0;
+    let speed = 40;
+    let element = document.getElementById(id);
+    element.innerHTML = "";
+
+    function typing(){
+        if(i < text.length){
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, speed);
+        }
+    }
+    typing();
+}
+
+// ❤️ floating hearts
+setInterval(()=>{
+    let heart = document.createElement("div");
+    heart.className="heart";
+    heart.innerText="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*20+10)+"px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{ heart.remove(); },5000);
+},400);
+
+</script>
+
+</body>
+</html>
